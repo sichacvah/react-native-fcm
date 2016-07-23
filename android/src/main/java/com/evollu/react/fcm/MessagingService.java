@@ -62,9 +62,9 @@ public class MessagingService extends FirebaseMessagingService {
     private void sendNotification(RemoteMessage remoteMessage) {
       String activityString = getCurrentActivity().getClass().getSimpleName();
       String packageName = getReactApplicationContext().getPackageName();
-      
 
-      Intent intent = new Intent(getApplicationContext(), Class.forName(packageName + "." + activityString););
+
+      Intent intent = new Intent(getApplicationContext(), Class.forName(packageName + "." + activityString);
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
