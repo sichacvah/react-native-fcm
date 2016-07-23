@@ -8,6 +8,7 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import org.json.JSONObject;
+import com.facebook.react.ReactActivity;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -40,7 +41,7 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage remoteMessage) {
-      Intent intent = new Intent(this, "android.intent.action.MAIN");
+      Intent intent = new Intent(this, MainActivity.class);
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       PendingIntent pendingIntent = PendingIntent.getActivity(this, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
