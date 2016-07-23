@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class FIRMessagingModule extends ReactContextBaseJavaModule implements LifecycleEventListene {
+public class FIRMessagingModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
     private final static String TAG = FIRMessagingModule.class.getCanonicalName();
     Intent initIntent;
 
