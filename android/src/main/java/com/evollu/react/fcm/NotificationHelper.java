@@ -21,7 +21,7 @@ public class NotificationHelper {
   private Context mContext;
 
   public NotificationHelper(Application context) {
-    mContext = contet;
+    mContext = context;
   }
 
   public Class getMainActivityClass() {
