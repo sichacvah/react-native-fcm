@@ -59,7 +59,7 @@ public class MessagingService extends FirebaseMessagingService {
       try {
         Class intentClass = new NotificationHelper(getApplication()).getMainActivityClass();
       } catch (ClassNotFoundException e) {
-        return null;
+        return;
       }
       Intent intent = new Intent(mContext, intentClass);
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
