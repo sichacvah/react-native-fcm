@@ -101,7 +101,7 @@ public class FIRMessagingModule extends ReactContextBaseJavaModule implements Li
                 NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                 manager.cancel(notificationId);
                 if (getReactApplicationContext().hasActiveCatalystInstance()) {   
-                    sendEvent("FCMNotificationCanceled", "cancel");
+                    sendEvent("FCMNotificationCanceled", notificationId);
                     abortBroadcast();
                 }
             }
