@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import java.lang.ClassNotFoundException;
 
 
 public class NotificationHelper {
@@ -28,6 +29,11 @@ public class NotificationHelper {
     String packageName = mContext.getPackageName();
     Intent launchIntent = mContext.getPackageManager().getLaunchIntentForPackage(packageName);
     String className = launchIntent.getComponent().getClassName();
-    return Class.forName(className);
+    try {
+      return Class.forName(className);
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 }
