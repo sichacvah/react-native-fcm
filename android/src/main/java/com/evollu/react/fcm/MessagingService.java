@@ -31,24 +31,6 @@ public class MessagingService extends FirebaseMessagingService {
 
     public int mNotificationId = 1;
 
-    private Class getMainActivityClass() {
-            try {
-                String packageName = getReactApplicationContext().getPackageName();
-
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getReactApplicationContext());
-                String activityString = preferences.getString("GcmMainActivity", null);
-                if (activityString == null) {
-                    Log.d(TAG, "GcmMainActivity is null");
-                    return null;
-                } else {
-                    return Class.forName(packageName + "." + activityString);
-                }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-                return null;
-            }
-    }
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Log.d(TAG, "Remote message received");
@@ -61,7 +43,7 @@ public class MessagingService extends FirebaseMessagingService {
 
     private void sendNotification(RemoteMessage remoteMessage) {
       String activityString = getCurrentActivity().getClass().getSimpleName();
-      String packageName = getReactApplicationContext().getPackageName();
+      String packageName = getApplicationContext().getPackageName();
 
 
       Intent intent = new Intent(getApplicationContext(), Class.forName(packageName + "." + activityString));
