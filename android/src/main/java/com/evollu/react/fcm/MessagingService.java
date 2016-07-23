@@ -21,6 +21,7 @@ import android.util.Log;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.app.*;
+import java.lang.ClassNotFoundException;
 
 
 
@@ -55,7 +56,11 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage remoteMessage) {
-      Class intentClass = new NotificationHelper(getApplication()).getMainActivityClass();
+      try {
+        Class intentClass = new NotificationHelper(getApplication()).getMainActivityClass();
+      } catch (ClassNotFoundException e) {
+        return null;
+      }
       Intent intent = new Intent(mContext, intentClass);
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       PendingIntent pendingIntent = PendingIntent.getActivity(mContext, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
