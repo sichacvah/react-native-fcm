@@ -16,7 +16,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
-
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -98,7 +98,7 @@ public class FIRMessagingModule extends ReactContextBaseJavaModule implements Li
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (getReactApplicationContext().hasActiveCatalystInstance()) {
-                    int notificationId = intent.getIntExtra("notificationId");
+                    int notificationId = intent.getIntExtra("notificationId", 0);
 
                     NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                     manager.cancel(notificationId);

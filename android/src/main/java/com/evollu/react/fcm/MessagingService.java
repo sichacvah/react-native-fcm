@@ -1,6 +1,6 @@
 package com.evollu.react.fcm;
 
-import java.util.Random;
+
 
 import android.content.Intent;
 import android.util.Log;
@@ -27,7 +27,7 @@ public class MessagingService extends FirebaseMessagingService {
 
     final static String GROUP_FCM_NOTIFICATIONS = "GROUP_FCM_NOTIFICATIONS";
 
-    public Int mNotificationId = 0;
+    public int mNotificationId = 1;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -39,8 +39,7 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage remoteMessage) {
-      mNotificationId = Random().getNext();
-      Intent intent = new Intent(this, MainActivity.class);
+      Intent intent = new Intent(getApplicationContext());
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       PendingIntent pendingIntent = PendingIntent.getActivity(this, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
