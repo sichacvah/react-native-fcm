@@ -42,17 +42,17 @@ public class MessagingService extends FirebaseMessagingService {
     private void sendNotification(RemoteMessage remoteMessage) {
       Intent intent = new Intent(getApplicationContext(), getApplicationContext().getClass());
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      PendingIntent pendingIntent = PendingIntent.getActivity(this, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
+      PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
 
       Intent cancelIntent = new Intent("com.evollu.react.fcm.CancelMessage");
       cancelIntent.putExtra("notificationId", mNotificationId);
-      PendingIntent btPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent,0);
+      PendingIntent btPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, cancelIntent,0);
 
 
       Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
       Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-      NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+      NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getApplicationContext())
         .setSmallIcon(R.drawable.ic_launcher)
         .setLargeIcon(largeIcon)
         .setPriority(NotificationCompat.PRIORITY_MAX)
