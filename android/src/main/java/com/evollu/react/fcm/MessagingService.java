@@ -56,8 +56,9 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage remoteMessage) {
+      Class intentClass;
       try {
-        Class intentClass = new NotificationHelper(getApplication()).getMainActivityClass();
+        intentClass = new NotificationHelper(getApplication()).getMainActivityClass();
       } catch (ClassNotFoundException e) {
         return;
       }
