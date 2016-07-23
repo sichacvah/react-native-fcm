@@ -20,15 +20,33 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.app.*;
 
 
 public class MessagingService extends FirebaseMessagingService {
+    private Context mContext;
+
+    public MessagingService(Application context) {
+      mContext = context;
+    }
 
     private static final String TAG = "MessagingService";
 
     final static String GROUP_FCM_NOTIFICATIONS = "GROUP_FCM_NOTIFICATIONS";
 
     public int mNotificationId = 1;
+
+    public Class getMainActivityClass() {
+      String packageName = mContext.getPackageName();
+      Intent launchIntent = mContext.getPackageManager().getLaunchIntentForPackage(packageName);
+      String className = launchIntent.getComponent().getClassName();
+      try {
+          return Class.forName(className);
+      } catch (ClassNotFoundException e) {
+          e.printStackTrace();
+          return null;
+      }
+    } 
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -41,7 +59,7 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage remoteMessage) {
-      Intent intent = new Intent(this, MainActivity.class);
+      Intent intent = new Intent(this, getMainActivityClass());
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       PendingIntent pendingIntent = PendingIntent.getActivity(this, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
