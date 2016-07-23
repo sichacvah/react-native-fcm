@@ -96,23 +96,14 @@ public class FIRMessagingModule extends ReactContextBaseJavaModule implements Li
 
         getReactApplicationContext().registerReceiver(new BroadcastReceiver() {
             @Override
-            public void onReceive(Context context, Intent intent) {               
-                
-                if (getReactApplicationContext().hasActiveCatalystInstance()) {   
-                    sendEvent("FCMNotificationCanceled");
-                    abortBroadcast();
-                }
-            }
-        }, intentFilter);
-
-
-        getApplicationContext().registerReceiver(new BroadcastReceiver() {
-            @Override
             public void onReceive(Context context, Intent intent) {
                 int notificationId = intent.getIntExtra("notificationId", 0);
                 NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                 manager.cancel(notificationId);
-                abortBroadcast();
+                if (getReactApplicationContext().hasActiveCatalystInstance()) {   
+                    sendEvent("FCMNotificationCanceled", notificationId);
+                    abortBroadcast();
+                }
             }
         }, intentFilter);
     }

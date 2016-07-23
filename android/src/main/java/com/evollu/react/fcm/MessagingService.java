@@ -40,7 +40,7 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage remoteMessage) {
-      Intent intent = new Intent(this, getApplicationContext().getClass());
+      Intent intent = new Intent(getApplicationContext(), getApplicationContext().getClass());
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       PendingIntent pendingIntent = PendingIntent.getActivity(this, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
