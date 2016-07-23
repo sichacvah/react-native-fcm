@@ -98,7 +98,7 @@ public class FIRMessagingModule extends ReactContextBaseJavaModule implements Li
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (getReactApplicationContext().hasActiveCatalystInstance()) {
-                    int notificationId = intent.getIntExtra('notificationId');
+                    int notificationId = intent.getIntExtra("notificationId");
 
                     NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                     manager.cancel(notificationId);

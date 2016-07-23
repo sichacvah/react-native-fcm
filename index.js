@@ -2,7 +2,8 @@ import {NativeModules, DeviceEventEmitter} from 'react-native';
 
 const eventsMap = {
     refreshToken: 'FCMTokenRefreshed',
-    notification: 'FCMNotificationReceived'
+    notification: 'FCMNotificationReceived',
+    cancel: 'FCMNotificationCanceled'
 };
 
 const FIRMessaging = NativeModules.RNFIRMessaging;
