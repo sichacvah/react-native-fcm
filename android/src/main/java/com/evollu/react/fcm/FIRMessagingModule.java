@@ -33,7 +33,7 @@ public class FIRMessagingModule extends ReactContextBaseJavaModule implements Li
     public FIRMessagingModule(ReactApplicationContext reactContext) {
         super(reactContext);
         getReactApplicationContext().addLifecycleEventListener(this);
-        getReactApplicationContext().addActivityEventListener(this);
+
         registerTokenRefreshHandler();
         registerMessageHandler();
         registerCancelMessageHandler();
