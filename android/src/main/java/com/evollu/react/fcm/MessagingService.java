@@ -38,13 +38,6 @@ public class MessagingService extends FirebaseMessagingService {
 
     public int mNotificationId = 1;
 
-    public Class getMainActivityClass() {
-      String packageName = mContext.getPackageName();
-      Intent launchIntent = mContext.getPackageManager().getLaunchIntentForPackage(packageName);
-      String className = launchIntent.getComponent().getClassName();
-      return Class.forName(className);
-    } 
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Log.d(TAG, "Remote message received");
