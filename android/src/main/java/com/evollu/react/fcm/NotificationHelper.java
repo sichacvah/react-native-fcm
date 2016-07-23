@@ -1,4 +1,4 @@
-package evollu.react.fcm;
+package com.evollu.react.fcm;
 
 
 import android.app.*;
