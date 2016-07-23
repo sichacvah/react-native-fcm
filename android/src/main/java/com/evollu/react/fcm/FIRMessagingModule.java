@@ -114,7 +114,6 @@ public class FIRMessagingModule extends ReactContextBaseJavaModule implements Li
         getReactApplicationContext().registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-            startActivity(intent);
             if (getReactApplicationContext().hasActiveCatalystInstance()) {
                 RemoteMessage message = intent.getParcelableExtra("data");
                 WritableMap params = Arguments.createMap();
