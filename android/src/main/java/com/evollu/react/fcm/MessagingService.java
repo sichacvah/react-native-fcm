@@ -23,6 +23,7 @@ import android.graphics.BitmapFactory;
 import android.app.*;
 
 
+
 public class MessagingService extends FirebaseMessagingService {
     private Context mContext;
 
@@ -54,7 +55,8 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage remoteMessage) {
-      Intent intent = new Intent(mContext, getMainActivityClass());
+      Class intentClass = new RNPushNotificationHelper(getApplication()).getMainActivityClass();
+      Intent intent = new Intent(mContext, intentClass);
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       PendingIntent pendingIntent = PendingIntent.getActivity(mContext, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
