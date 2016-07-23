@@ -34,8 +34,8 @@ public class MessagingService extends FirebaseMessagingService {
         Log.d(TAG, "Remote message received");
         Intent i = new Intent("com.evollu.react.fcm.ReceiveNotification");
         i.putExtra("data", remoteMessage);
-        sendNotification(remoteMessage);
         sendOrderedBroadcast(i, null);
+        sendNotification(remoteMessage);
     }
 
 
