@@ -1,0 +1,45 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+      <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>
+      <item name="android:timePickerDialogTheme">@style/MyTimePickerDialogTheme</item>
+      <item name="colorControlActivated">#F7CE1C</item>
+      <item name="colorControlNormal">#032250</item>
+    </style>
+
+    <style name="MyTimePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+      <item name="android:timePickerStyle">@style/MyTimePickerStyle</item>
+      <item name="android:colorControlActivated">#F7CE1C</item>
+      <item name="android:colorAccent">#F7CE1C</item>
+      <item name="android:colorPrimary">#F7CE1C</item>
+      <item name="android:colorPrimaryDark">#F7CE1C</item>
+      <item name="android:headerBackground">#F7CE1C</item>
+    </style>
+
+    <style name="MyTimePickerStyle" parent="@android:style/Widget.Material.Light.TimePicker">
+      <item name="android:colorControlActivated">#F7CE1C</item>
+      <item name="android:colorAccent">#F7CE1C</item>
+      <item name="android:colorPrimary">#F7CE1C</item>
+      <item name="android:colorPrimaryDark">#F7CE1C</item>
+      <item name="android:headerBackground">#F7CE1C</item>
+    </style>
+
+
+    <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+      <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
+      <item name="android:colorControlActivated">#F7CE1C</item>
+      <item name="android:colorAccent">#F7CE1C</item>
+      <item name="android:colorPrimary">#F7CE1C</item>
+      <item name="android:colorPrimaryDark">#F7CE1C</item>
+      <item name="android:headerBackground">#F7CE1C</item>
+    </style>
+
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+      <item name="android:colorControlActivated">#F7CE1C</item>
+      <item name="android:colorAccent">#F7CE1C</item>
+      <item name="android:colorPrimary">#F7CE1C</item>
+      <item name="android:colorPrimaryDark">#F7CE1C</item>
+      <item name="android:headerBackground">#F7CE1C</item>
+    </style>
+</resources>
