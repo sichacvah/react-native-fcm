@@ -36,6 +36,7 @@ public class FIRMessagingModule extends ReactContextBaseJavaModule implements Li
         getReactApplicationContext().addActivityEventListener(this);
         registerTokenRefreshHandler();
         registerMessageHandler();
+        registerCancelMessageHandler();
     }
 
     @Override
@@ -84,6 +85,24 @@ public class FIRMessagingModule extends ReactContextBaseJavaModule implements Li
                     String token = intent.getStringExtra("token");
 
                     sendEvent("FCMTokenRefreshed", token);
+                    abortBroadcast();
+                }
+            }
+        }, intentFilter);
+    }
+
+    private void registerCancelMessageHandler() {
+        IntentFilter intentFilter = new IntentFilter("com.evollu.react.fcm.CancelMessage");
+
+        getReactApplicationContext().registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (getReactApplicationContext().hasActiveCatalystInstance()) {
+                    int notificationId = intent.getIntExtra('notificationId');
+
+                    NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    manager.cancel(notificationId);
+                    sendEvent("FCMNotificationCanceled", "cancel");
                     abortBroadcast();
                 }
             }
