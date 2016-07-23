@@ -21,6 +21,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 
+
+
 public class MessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MessagingService";
@@ -28,6 +30,24 @@ public class MessagingService extends FirebaseMessagingService {
     final static String GROUP_FCM_NOTIFICATIONS = "GROUP_FCM_NOTIFICATIONS";
 
     public int mNotificationId = 1;
+
+    private Class getMainActivityClass() {
+            try {
+                String packageName = getReactApplicationContext().getPackageName();
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getReactApplicationContext());
+                String activityString = preferences.getString("GcmMainActivity", null);
+                if (activityString == null) {
+                    Log.d(TAG, "GcmMainActivity is null");
+                    return null;
+                } else {
+                    return Class.forName(packageName + "." + activityString);
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                return null;
+            }
+    }
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -40,7 +60,11 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage remoteMessage) {
-      Intent intent = new Intent(getApplicationContext(), getApplicationContext().getClass());
+      String activityString = getCurrentActivity().getClass().getSimpleName();
+      String packageName = getReactApplicationContext().getPackageName();
+      
+
+      Intent intent = new Intent(getApplicationContext(), Class.forName(packageName + "." + activityString););
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
