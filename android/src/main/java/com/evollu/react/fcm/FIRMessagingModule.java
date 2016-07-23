@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import com.facebook.react.bridge.ActivityEventListener;
+
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.Promise;
@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class FIRMessagingModule extends ReactContextBaseJavaModule implements LifecycleEventListener, ActivityEventListener {
+public class FIRMessagingModule extends ReactContextBaseJavaModule implements LifecycleEventListene {
     private final static String TAG = FIRMessagingModule.class.getCanonicalName();
     Intent initIntent;
 
