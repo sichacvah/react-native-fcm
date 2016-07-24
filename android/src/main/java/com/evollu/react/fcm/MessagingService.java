@@ -22,7 +22,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.app.*;
 import java.lang.ClassNotFoundException;
-import com.evollu.react.fcm.ButtonReciever;
 
 
 
@@ -51,7 +50,7 @@ public class MessagingService extends FirebaseMessagingService {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(mContext, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
-        Intent cancelIntent = new Intent(mContext, ButtonReciever.class);
+        Intent cancelIntent = new Intent(mContext, ButtonReceiver.class);
         cancelIntent.putExtra("notificationId", mNotificationId);
         PendingIntent btPendingIntent = PendingIntent.getBroadcast(mContext, 0, cancelIntent,0);
 
