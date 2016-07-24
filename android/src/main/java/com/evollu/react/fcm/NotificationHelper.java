@@ -25,6 +25,10 @@ public class NotificationHelper {
     mContext = context;
   }
 
+  public Context getContext() {
+    return mContext;
+  }
+
   public Class getMainActivityClass() {
     String packageName = mContext.getPackageName();
     Intent launchIntent = mContext.getPackageManager().getLaunchIntentForPackage(packageName);
