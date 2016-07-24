@@ -26,12 +26,6 @@ import java.lang.ClassNotFoundException;
 
 
 public class MessagingService extends FirebaseMessagingService {
-    private Context mContext;
-
-    public MessagingService(Application context) {
-      mContext = context;
-    }
-
     private static final String TAG = "MessagingService";
 
     final static String GROUP_FCM_NOTIFICATIONS = "GROUP_FCM_NOTIFICATIONS";
