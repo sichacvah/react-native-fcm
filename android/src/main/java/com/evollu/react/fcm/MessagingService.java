@@ -43,7 +43,7 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage remoteMessage) {
-        NotificationHelper nHelper = new NotificationHelper(getApplication);
+        NotificationHelper nHelper = new NotificationHelper(getApplication());
         Context mContext = nHelper.getContext();
         Class intentClass = nHelper.getMainActivityClass();
         Intent intent = new Intent(mContext, intentClass);
