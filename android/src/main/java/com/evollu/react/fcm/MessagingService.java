@@ -51,9 +51,9 @@ public class MessagingService extends FirebaseMessagingService {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(mContext, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
-        Intent cancelIntent = new Intent(mContext, ButtonReceiver.class);
+        Intent cancelIntent = new Intent(this, ButtonReceiver.class);
         cancelIntent.putExtra("notificationId", mNotificationId);
-        PendingIntent btPendingIntent = PendingIntent.getBroadcast(mContext, 0, cancelIntent,0);
+        PendingIntent btPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent,0);
 
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
