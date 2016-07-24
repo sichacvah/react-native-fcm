@@ -52,7 +52,7 @@ public class MessagingService extends FirebaseMessagingService {
 
         Intent cancelIntent = new Intent("com.evollu.react.fcm.CancelMessage");
         cancelIntent.putExtra("notificationId", mNotificationId);
-        PendingIntent btPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent,0);
+        PendingIntent btPendingIntent = PendingIntent.getBroadcast(mContext, 0, cancelIntent,0);
 
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
