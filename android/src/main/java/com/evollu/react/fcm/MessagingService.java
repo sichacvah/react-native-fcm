@@ -50,7 +50,7 @@ public class MessagingService extends FirebaseMessagingService {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(mContext, mNotificationId, intent, PendingIntent.FLAG_ONE_SHOT);
 
-        Intent cancelIntent = new Intent("com.evollu.react.fcm.CancelMessage");
+        Intent cancelIntent = new Intent(mContext, ButtonReciever.class);
         cancelIntent.putExtra("notificationId", mNotificationId);
         PendingIntent btPendingIntent = PendingIntent.getBroadcast(mContext, 0, cancelIntent,0);
 
